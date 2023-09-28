@@ -1,0 +1,99 @@
+
+public class chainOfResponsability {
+
+}
+
+interface ComponentWithContextualHelp {
+	void showHelp();
+}
+
+// A classe base para componentes simples.
+abstract class Component implements ComponentWithContextualHelp {
+	protected String tooltipText;
+	protected Container container;
+
+	public void showHelp() {
+		if (tooltipText != null) {
+			System.out.println("Mostrando dica de contexto: " + tooltipText);
+		} else if (container != null) {
+			container.showHelp();
+		}
+	}
+}
+
+// Contêineres podem conter tanto componentes simples como
+// outros contêineres como filhos. As relações da corrente são
+// definidas aqui. A classe herda o comportamento showHelp de
+// sua mãe.
+abstract class Container extends Component {
+	protected java.util.List<Component> children = new java.util.ArrayList<>();
+
+	public void add(Component child) {
+		children.add(child);
+		child.container = this;
+	}
+}
+
+// Componentes primitivos estão de bom tamanho com a
+// implementação de ajuda padrão.
+class Button extends Component {
+	public Button(String tooltipText) {
+		this.tooltipText = tooltipText;
+	}
+}
+
+// Mas componentes complexos podem sobrescrever a implementação
+// padrão. Se o texto de ajuda não pode ser fornecido de uma
+// nova maneira, o componente pode sempre chamar a implementação
+// base (veja a classe Component).
+class Panel extends Container {
+	private String modalHelpText;
+
+	public Panel(String modalHelpText) {
+		this.modalHelpText = modalHelpText;
+	}
+
+	public void showHelp() {
+		if (modalHelpText != null) {
+			System.out.println("Mostrando janela modal com texto de ajuda: " + modalHelpText);
+		} else {
+			super.showHelp();
+		}
+	}
+}
+
+// ...o mesmo que acima...
+class Dialog extends Container {
+	private String wikiPageURL;
+
+	public Dialog(String wikiPageURL) {
+		this.wikiPageURL = wikiPageURL;
+	}
+
+	public void showHelp() {
+		if (wikiPageURL != null) {
+			System.out.println("Abrindo página de ajuda do wiki: " + wikiPageURL);
+		} else {
+			super.showHelp();
+		}
+	}
+}
+
+// Código cliente.
+class Application {
+	public void createUI() {
+		Dialog dialog = new Dialog("Budget Reports");
+		dialog.wikiPageURL = "http://...";
+		Panel panel = new Panel("This panel does...");
+		Button ok = new Button("This is an OK button that...");
+		Button cancel = new Button(null);
+
+		panel.add(ok);
+		panel.add(cancel);
+		dialog.add(panel);
+	}
+
+	public void onF1KeyPress() {
+		// Imagine o que acontece aqui.
+	}
+}

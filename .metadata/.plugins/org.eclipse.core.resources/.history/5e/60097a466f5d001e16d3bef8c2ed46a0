@@ -1,0 +1,8 @@
+public abstract class Button {
+	protected String identificador;
+
+	public abstract Button render();
+
+	public abstract Button onclick();
+
+}

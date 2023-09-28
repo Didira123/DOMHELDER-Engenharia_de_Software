@@ -1,0 +1,186 @@
+// A classe criadora declara o método fábrica que deve retornar
+// um objeto da classe produto. As subclasses da criadora
+// geralmente fornecem a implementação desse método.
+
+public class Teste2 {
+	public static void main(String[] args) {
+//		Application app = new Application();
+//		app.initialize();
+	}
+}
+
+abstract class Dialog {
+	public abstract Button createButton();
+
+	public Dialog render() {
+		return null;
+	}
+}
+
+class WindowsDialog extends Dialog {
+
+	@Override
+	public Button createButton() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}
+
+class WebDialog extends Dialog {
+
+	@Override
+	public Button createButton() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}
+
+abstract class Button {
+	public abstract Button render();
+
+	public abstract Button onclick();
+
+}
+
+class ButtonWindows extends Button {
+
+	@Override
+	public Button render() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Button onclick() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+}
+
+class ButtonHTML extends Button {
+
+	@Override
+	public Button render() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Button onclick() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}
+
+//abstract class Dialog {
+//	// Método fábrica abstrato
+//	public abstract Button createButton();
+//
+//	// Método comum que usa o Factory Method
+//	public void render() {
+//		// Chame o método fábrica para criar um objeto produto.
+//		Button okButton = createButton();
+//
+//		// Agora use o produto.
+//		okButton.onClick(this::closeDialog);
+//		okButton.render();
+//	}
+//
+//	private void closeDialog() {
+//		// Implementação da lógica de fechar o diálogo.
+//	}
+//}
+//
+//// Criadores concretos sobrescrevem o método fábrica para mudar
+//// o tipo de produto resultante.
+//class WindowsDialog extends Dialog {
+//	public Button createButton() {
+//		return new WindowsButton();
+//	}
+//}
+//
+//class WebDialog extends Dialog {
+//	public Button createButton() {
+//		return new HTMLButton();
+//	}
+//}
+//
+//// A interface do produto declara as operações que todos os
+//// produtos concretos devem implementar.
+//interface Button {
+//	void render();
+//
+//	void onClick(Runnable action);
+//}
+//
+//// Produtos concretos fornecem várias implementações da
+//// interface do produto.
+//class WindowsButton implements Button {
+//	public void render() {
+//		// Renderiza um botão no estilo Windows.
+//	}
+//
+//	public void onClick(Runnable action) {
+//		// Vincula um evento de clique do SO nativo.
+//	}
+//}
+//
+//class HTMLButton implements Button {
+//	public void render() {
+//		// Retorna uma representação HTML de um botão.
+//	}
+//
+//	public void onClick(Runnable action) {
+//		// Vincula um evento de clique no navegador web.
+//	}
+//}
+//
+//class Application {
+//	private Dialog dialog;
+//
+//	// A aplicação seleciona um tipo de criador dependendo da
+//	// configuração atual ou definições de ambiente.
+//	public void initialize() {
+//		String os = readApplicationConfigFile().getOS();
+//
+//		if ("Windows".equals(os)) {
+//			dialog = new WindowsDialog();
+//			System.out.println("Windows");
+//		} else if ("Web".equals(os)) {
+//			dialog = new WebDialog();
+//			System.out.println("Web");
+//		} else {
+//			throw new IllegalArgumentException("Error! Unknown operating system.");
+//		}
+//	}
+//
+//	// O código cliente trabalha com uma instância de um criador
+//	// concreto, ainda que com sua interface base. Desde que o
+//	// cliente continue trabalhando com a criadora através da
+//	// interface base, você pode passar qualquer subclasse da
+//	// criadora.
+//	public void main() {
+//		this.initialize();
+//		dialog.render();
+//	}
+//
+//	private Config readApplicationConfigFile() {
+//		// Implementação para ler as configurações do aplicativo.
+//		return new Config("Web");
+//	}
+//}
+//
+//class Config {
+//	private String os;
+//
+//	public Config(String os) {
+//		this.os = os;
+//	}
+//
+//	public String getOS() {
+//		return os;
+//	}
+//}

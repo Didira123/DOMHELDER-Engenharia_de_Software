@@ -1,0 +1,9 @@
+import java.sql.SQLException;
+
+public class Singleton {
+	public static void main(String[] args) throws SQLException {
+
+		System.out.println("asd");
+
+	}
+}

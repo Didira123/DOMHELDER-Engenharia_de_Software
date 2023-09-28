@@ -1,0 +1,22 @@
+import java.sql.DriverManager;
+import java.sql.SQLException;
+
+import org.h2.tools.Server;
+
+public class Singleton {
+	public static void main(String[] args) throws SQLException {
+
+//		Server server = Server.createTcpServer("-tcpAllowOthers").start();
+//		System.out.println("Servidor H2 iniciado e acessível em " + server.getURL());
+
+		DriverManager.getConnection("jdbc:h2:tcp://localhost//mydb;USER=myuser;PASSWORD=mypassword");
+
+		while (true) {
+			try {
+				System.out.println("OPA");
+			} catch (Exception e) {
+				throw new RuntimeException(e);
+			}
+		}
+	}
+}
